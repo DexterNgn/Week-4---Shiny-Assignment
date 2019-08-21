@@ -1,0 +1,50 @@
+---
+title: "Shiny_Pitch"
+author: "tinh_dexter"
+date: "August 21, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+### This presentation is part of the Course Project for the Coursera Developing Data Products class. The peer assessed assignment has two parts:
+
+#### - First, we need to create a Shiny application and deploy it on Rstudio's servers. 
+
+#### - Second, we should use Slidify or Rstudio Presenter to prepare a reproducible pitch presentation about the application. This presentation adresses the second part of the course project. 
+
+## What is this app about? 
+### We will do these two actions:
+
+#### - Sidebar with a slider input for number of bins
+
+#### - Show a plot of the generated distribution
+
+## UI codes
+
+`library(datasets)
+library(shiny)
+shinyUI(fluidPage(titlePanel("Hi Shiny"),
+        sidebarLayout(sidebarPanel(sliderInput("bins",
+                                    "Number of bins:",
+                                    min = 1,
+                                    max = 500,
+                                    value = 10)
+                ),mainPanel(plotOutput("distPlot")
+                )
+        )))`
+
+## Server codes
+
+
+## Plot
+```{r}
+x <- faithful[, 2] 
+bins <- seq(min(x), max(x))
+hist(x, breaks = bins, col = 'blue', border = 'red')
+```
+
+## Thank you
